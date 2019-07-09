@@ -10,4 +10,4 @@ void Main()
 	Application::SetCompatibleTextRenderingDefault(false);
 	HwaChat::MyForm form;
 	Application::Run(% form);
-} 
+}  

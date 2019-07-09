@@ -17,7 +17,7 @@ namespace HwaChat {
 	using namespace System::Data;
 	using namespace System::Drawing;
 	using namespace cv;
-	using namespace std;
+	using namespace std; 
 
 	int showMyCamera();
 
@@ -92,7 +92,7 @@ namespace HwaChat {
 			// 
 			// btnMyCameraOFF
 			// 
-			this->btnMyCameraOFF->Location = System::Drawing::Point(178, 105);
+			this->btnMyCameraOFF->Location = System::Drawing::Point(181, 105);
 			this->btnMyCameraOFF->Name = L"btnMyCameraOFF";
 			this->btnMyCameraOFF->Size = System::Drawing::Size(105, 42);
 			this->btnMyCameraOFF->TabIndex = 1;
