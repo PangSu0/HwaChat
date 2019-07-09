@@ -10,7 +10,7 @@ namespace defCamera
 {
 	class camera
 	{
-	public:
+	public: 
 		camera();
 		System::Drawing::Bitmap^ Show(Mat& colorImage);
 

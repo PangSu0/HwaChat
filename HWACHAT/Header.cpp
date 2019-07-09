@@ -16,7 +16,7 @@ System::Drawing::Bitmap^ camera::Show(cv::Mat& colorImage) {
 	{
 	case CV_8UC3:
 		b = gcnew System::Drawing::Bitmap(colorImage.cols, colorImage.rows, colorImage.step,
-			System::Drawing::Imaging::PixelFormat::Format24bppRgb, ptr);
+			System::Drawing::Imaging::PixelFormat::Format24bppRgb, ptr); 
 		break;
 	case CV_8UC1:
 		b = gcnew System::Drawing::Bitmap(colorImage.cols, colorImage.rows, colorImage.step,

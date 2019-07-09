@@ -53,7 +53,7 @@ namespace HWACHAT {
 
 
 
-	protected:
+	protected: 
 
 	private:
 		/// <summary>
