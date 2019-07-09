@@ -7,6 +7,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "opencvTest", "opencvTest\op
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "WindowsProject1", "WindowsProject1\WindowsProject1.vcxproj", "{DC12F93C-5362-4812-93DF-90A553F7EF37}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CLRTest", "CLRTest\CLRTest.vcxproj", "{7DD2A439-C7FA-4CB9-B1C0-973DABC71CB5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -31,6 +33,14 @@ Global
 		{DC12F93C-5362-4812-93DF-90A553F7EF37}.Release|x64.Build.0 = Release|x64
 		{DC12F93C-5362-4812-93DF-90A553F7EF37}.Release|x86.ActiveCfg = Release|Win32
 		{DC12F93C-5362-4812-93DF-90A553F7EF37}.Release|x86.Build.0 = Release|Win32
+		{7DD2A439-C7FA-4CB9-B1C0-973DABC71CB5}.Debug|x64.ActiveCfg = Debug|x64
+		{7DD2A439-C7FA-4CB9-B1C0-973DABC71CB5}.Debug|x64.Build.0 = Debug|x64
+		{7DD2A439-C7FA-4CB9-B1C0-973DABC71CB5}.Debug|x86.ActiveCfg = Debug|Win32
+		{7DD2A439-C7FA-4CB9-B1C0-973DABC71CB5}.Debug|x86.Build.0 = Debug|Win32
+		{7DD2A439-C7FA-4CB9-B1C0-973DABC71CB5}.Release|x64.ActiveCfg = Release|x64
+		{7DD2A439-C7FA-4CB9-B1C0-973DABC71CB5}.Release|x64.Build.0 = Release|x64
+		{7DD2A439-C7FA-4CB9-B1C0-973DABC71CB5}.Release|x86.ActiveCfg = Release|Win32
+		{7DD2A439-C7FA-4CB9-B1C0-973DABC71CB5}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -55,24 +55,6 @@ int main(int argc, const char** argv)
 	return 0;
 }
 
-void Display()
-{
-
-}
-
-void Detecting(Mat frame)
-{
-	std::vector<Rect> faces;
-	Mat frame_gray;
-
-	cvtColor(frame, frame, COLOR_BGR2GRAY);
-	equalizeHist(frame_gray, frame_gray);
-
-	face_cascade.detectMultiScale(frame_gray, faces, 1.1, 2, 0 | CASCADE_SCALE_IMAGE, Size(20, 20));
-
-}
-
-
 /** @function detectAndDisplay */
 void detectAndDisplay(Mat frame)
 {
