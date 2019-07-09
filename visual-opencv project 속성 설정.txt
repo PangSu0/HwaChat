@@ -1,0 +1,6 @@
+C:\opencv-4.1.0\build\include
+C:\opencv-4.1.0\build\x64\vc15\lib
+PATH=C:\opencv-4.1.0\build\x64\vc15\bin;%PATH%
+opencv_world410d.lib;
+opencv_world410.lib;
+C:\opencv-4.1.0\sources\samples\cpp\videocapture_basic.cpp
