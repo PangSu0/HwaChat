@@ -11,9 +11,9 @@ namespace defCamera
 	class Camera
 	{
 	public:
-		Camera();
-		System::Drawing::Bitmap^ Cat(Mat& colorImage);
+		Camera(); 
 		System::Drawing::Bitmap^ Show(Mat& colorImage);
-		
+		System::Drawing::Bitmap^ Cat(Mat& colorImage);
+		System::Drawing::Bitmap^ Glasses(Mat& colorImage);
 	};
 }

@@ -57,6 +57,7 @@ namespace HwaChat {
 	private: System::Windows::Forms::Button^ btnPlay;
 
 	private: System::Windows::Forms::Button^ btnCat;
+	private: System::Windows::Forms::Button^ btnGlasses;
 
 
 	private: System::ComponentModel::IContainer^ components;
@@ -77,6 +78,7 @@ namespace HwaChat {
 			this->picCam = (gcnew System::Windows::Forms::PictureBox());
 			this->btnPlay = (gcnew System::Windows::Forms::Button());
 			this->btnCat = (gcnew System::Windows::Forms::Button());
+			this->btnGlasses = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->picCam))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -118,11 +120,22 @@ namespace HwaChat {
 			this->btnCat->UseVisualStyleBackColor = true;
 			this->btnCat->Click += gcnew System::EventHandler(this, &MyForm::BtnCat_Click);
 			// 
+			// btnGlasses
+			// 
+			this->btnGlasses->Location = System::Drawing::Point(321, 389);
+			this->btnGlasses->Name = L"btnGlasses";
+			this->btnGlasses->Size = System::Drawing::Size(97, 32);
+			this->btnGlasses->TabIndex = 6;
+			this->btnGlasses->Text = L"Glasses";
+			this->btnGlasses->UseVisualStyleBackColor = true;
+			this->btnGlasses->Click += gcnew System::EventHandler(this, &MyForm::BtnGlasses_Click);
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 15);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(791, 430);
+			this->Controls->Add(this->btnGlasses);
 			this->Controls->Add(this->btnCat);
 			this->Controls->Add(this->btnPlay);
 			this->Controls->Add(this->picCam);
@@ -148,7 +161,7 @@ namespace HwaChat {
 					break;
 				}
 				picCam->Image = camera.Show(frame);
-				if (waitKey(5) >= 0) break;
+				if (waitKey(30) >= 0) break;
 			}
 			return 0;
 		}
@@ -165,7 +178,24 @@ namespace HwaChat {
 					break;
 				}
 				picCam->Image = camera.Cat(frame);
-				if (waitKey(5) >= 0) break;
+				if (waitKey(30) >= 0) break;
+			}
+			return 0;
+		}
+		int showMyCamera_Glasses() {
+
+			int deviceID = 0;             // 0 = open default camera
+			int apiID = cv::CAP_ANY;      // 0 = autodetect default API
+			cap.open(deviceID + apiID);
+
+			for (;;) {
+				cap.read(frame);
+				if (frame.empty()) {
+					cerr << "ERROR! blank frame grabbed\n";
+					break;
+				}
+				picCam->Image = camera.Glasses(frame);
+				if (waitKey(30) >= 0) break;
 			}
 			return 0;
 		}
@@ -175,11 +205,11 @@ namespace HwaChat {
     private: System::Void BtnPlay_Click(System::Object^ sender, System::EventArgs^ e) {
 		showMyCamera();
     }
-	private: System::Void BtnSunglasses_Click(System::Object^ sender, System::EventArgs^ e) {
-		
-	}
     private: System::Void BtnCat_Click(System::Object^ sender, System::EventArgs^ e) {
 		showMyCamera_CatEars();
+    }
+    private: System::Void BtnGlasses_Click(System::Object^ sender, System::EventArgs^ e) {
+		showMyCamera_Glasses();
     }
 };
 }
