@@ -44,8 +44,8 @@ int main(int argc, const char** argv)
 
 	//얼굴과 눈을 훈련시킨 XML 파일
 	//XML 파일은 opencv-4.1.0 > source > data > haarcascades 에서 복사
-	if (!nestedCascade.load(samples::findFileOrKeep("haarcascade_eye_tree_eyeglasses.xml")))
-		cerr << "WARNING: Could not load classifier cascade for nested objects" << endl;
+	/*if (!nestedCascade.load(samples::findFileOrKeep("haarcascade_eye_tree_eyeglasses.xml")))
+		cerr << "WARNING: Could not load classifier cascade for nested objects" << endl;*/
 	if (!cascade.load(samples::findFile("haarcascade_frontalface_alt.xml")))
 	{
 		cerr << "ERROR: Could not load classifier cascade" << endl;
@@ -61,23 +61,23 @@ int main(int argc, const char** argv)
 		}
 	}
 
-	//이미지를 불러 온 경우 얼굴을 검출하는 소스코드
-	else if (!inputName.empty())
-	{
-		image = imread(samples::findFileOrKeep(inputName), IMREAD_COLOR);
-		if (image.empty())
-		{
-			if (!capture.open(samples::findFileOrKeep(inputName)))
-			{
-				cout << "Could not read " << inputName << endl;
-				return 1;
-			}
-		}
+	////이미지를 불러 온 경우 얼굴을 검출하는 소스코드
+	//else if (!inputName.empty())
+	//{
+	//	image = imread(samples::findFileOrKeep(inputName), IMREAD_COLOR);
+	//	if (image.empty())
+	//	{
+	//		if (!capture.open(samples::findFileOrKeep(inputName)))
+	//		{
+	//			cout << "Could not read " << inputName << endl;
+	//			return 1;
+	//		}
+	//	}
 
-		detectAndDraw(image, cascade, nestedCascade, scale, tryflip, glasses);
+	//	detectAndDraw(image, cascade, nestedCascade, scale, tryflip, glasses);
 
-		waitKey(0);
-	}
+	//	waitKey(0);
+	//}
 
 	//영상으로부터 얼굴 검출
 	if (capture.isOpened())
@@ -177,68 +177,68 @@ void detectAndDraw(Mat & img, CascadeClassifier & cascade,
 		}
 
 		//얼굴 내부 영역에서 눈 위치 검출
-		smallImgROI = smallImg(r);
-		nestedCascade.detectMultiScale(smallImgROI, nestedObjects,
-			1.1, 2, 0
-			//|CASCADE_FIND_BIGGEST_OBJECT
-			//|CASCADE_DO_ROUGH_SEARCH
-			//|CASCADE_DO_CANNY_PRUNING
-			| CASCADE_SCALE_IMAGE,
-			Size(20, 20));
+		//smallImgROI = smallImg(r);
+		//nestedCascade.detectMultiScale(smallImgROI, nestedObjects,
+		//	1.1, 2, 0
+		//	//|CASCADE_FIND_BIGGEST_OBJECT
+		//	//|CASCADE_DO_ROUGH_SEARCH
+		//	//|CASCADE_DO_CANNY_PRUNING
+		//	| CASCADE_SCALE_IMAGE,
+		//	Size(20, 20));
 
 
-		cout << nestedObjects.size() << endl;
+		//cout << nestedObjects.size() << endl;
 
-		vector<Point> points;
-		//눈 위치에 원을 그려줌
-		for (size_t j = 0; j < nestedObjects.size(); j++)
-		{
-			Rect nr = nestedObjects[j];
-			center.x = cvRound((r.x + nr.x + nr.width * 0.5) * scale);
-			center.y = cvRound((r.y + nr.y + nr.height * 0.5) * scale);
-			radius = cvRound((nr.width + nr.height) * 0.25 * scale);
-			circle(img, center, radius, color, 3, 8, 0);
+		//vector<Point> points;
+		////눈 위치에 원을 그려줌
+		//for (size_t j = 0; j < nestedObjects.size(); j++)
+		//{
+		//	Rect nr = nestedObjects[j];
+		//	center.x = cvRound((r.x + nr.x + nr.width * 0.5) * scale);
+		//	center.y = cvRound((r.y + nr.y + nr.height * 0.5) * scale);
+		//	radius = cvRound((nr.width + nr.height) * 0.25 * scale);
+		//	circle(img, center, radius, color, 3, 8, 0);
 
-			Point p(center.x, center.y);
-			points.push_back(p);
-		}
+		//	Point p(center.x, center.y);
+		//	points.push_back(p);
+		//}
 
-		//눈 위치가 2개로 검출 된 경우, x좌표 기준으로 정렬
-		if (points.size() == 2) {
+		////눈 위치가 2개로 검출 된 경우, x좌표 기준으로 정렬
+		//if (points.size() == 2) {
 
-			Point center1 = points[0];
-			Point center2 = points[1];
+		//	Point center1 = points[0];
+		//	Point center2 = points[1];
 
-			if (center1.x > center2.x) {
-				Point temp;
-				temp = center1;
-				center1 = center2;
-				center2 = temp;
-			}
+		//	if (center1.x > center2.x) {
+		//		Point temp;
+		//		temp = center1;
+		//		center1 = center2;
+		//		center2 = temp;
+		//	}
 
-			//눈 위치가 아닌 경우 필터링
-			//가로 길이와 세로 길이로 판정
-			int width = abs(center2.x - center1.x);
-			int height = abs(center2.y - center1.y);
+		//	//눈 위치가 아닌 경우 필터링
+		//	//가로 길이와 세로 길이로 판정
+		//	int width = abs(center2.x - center1.x);
+		//	int height = abs(center2.y - center1.y);
 
-			if (width > height) {
-				//눈 사이 간격과 안경알 사이 간격 비율 계산
-				float imgScale = width / 330.0;
-				//계산한 비율로 안경 크기 조정
-				int w, h;
-				w = glasses.cols * imgScale;
-				h = glasses.rows * imgScale;
-				//오른쪽 안경알을 중심으로 안경의 위치 조정
-				int offsetX = 150 * imgScale;
-				int offsetY = 160 * imgScale;
+		//	if (width > height) {
+		//		//눈 사이 간격과 안경알 사이 간격 비율 계산
+		//		float imgScale = width / 330.0;
+		//		//계산한 비율로 안경 크기 조정
+		//		int w, h;
+		//		w = glasses.cols * imgScale * 2;
+		//		h = glasses.rows * imgScale * 2;
+		//		//오른쪽 안경알을 중심으로 안경의 위치 조정
+		//		int offsetX = 150 * imgScale;
+		//		int offsetY = 160 * imgScale;
 
-				Mat resized_glasses;
-				resize(glasses, resized_glasses, cv::Size(w, h), 0, 0);
-				//얼굴 이미지에 안경 이미지 오버랩
-				overlayImage(output2, resized_glasses, result, Point(center1.x - offsetX, center1.y - offsetY));
-				output2 = result;
-			}
-		}
+		//		Mat resized_glasses;
+		//		resize(glasses, resized_glasses, cv::Size(w, h), 0, 0);
+		//		//얼굴 이미지에 안경 이미지 오버랩
+		//		overlayImage(output2, resized_glasses, result, Point(center1.x - offsetX, center1.y - offsetY));
+		//		output2 = result;
+		//	}
+		//}
 	}
 
 	//안경을 오버랩 못했을 경우 겸출 결과 구현
