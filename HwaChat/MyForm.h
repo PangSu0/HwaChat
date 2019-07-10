@@ -55,22 +55,11 @@ namespace HwaChat {
 	private: System::Windows::Forms::Button^ btnMyCameraOFF;
 	private: System::Windows::Forms::PictureBox^ picCam;
 	private: System::Windows::Forms::Button^ btnPlay;
-	private: System::Windows::Forms::Button^ btnSunglasses;
-	protected:
 
+	private: System::Windows::Forms::Button^ btnCat;
 
-	protected:
-
-	protected:
 
 	private: System::ComponentModel::IContainer^ components;
-
-	protected:
-
-	protected:
-
-	protected:
-
 	private:
 		/// <summary>
 		/// Required designer variable.
@@ -87,7 +76,7 @@ namespace HwaChat {
 			this->btnMyCameraOFF = (gcnew System::Windows::Forms::Button());
 			this->picCam = (gcnew System::Windows::Forms::PictureBox());
 			this->btnPlay = (gcnew System::Windows::Forms::Button());
-			this->btnSunglasses = (gcnew System::Windows::Forms::Button());
+			this->btnCat = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->picCam))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -119,22 +108,22 @@ namespace HwaChat {
 			this->btnPlay->UseVisualStyleBackColor = true;
 			this->btnPlay->Click += gcnew System::EventHandler(this, &MyForm::BtnPlay_Click);
 			// 
-			// btnSunglasses
+			// btnCat
 			// 
-			this->btnSunglasses->Location = System::Drawing::Point(218, 389);
-			this->btnSunglasses->Name = L"btnSunglasses";
-			this->btnSunglasses->Size = System::Drawing::Size(97, 32);
-			this->btnSunglasses->TabIndex = 4;
-			this->btnSunglasses->Text = L"sunglasses";
-			this->btnSunglasses->UseVisualStyleBackColor = true;
-			this->btnSunglasses->Click += gcnew System::EventHandler(this, &MyForm::BtnSunglasses_Click);
+			this->btnCat->Location = System::Drawing::Point(218, 389);
+			this->btnCat->Name = L"btnCat";
+			this->btnCat->Size = System::Drawing::Size(97, 32);
+			this->btnCat->TabIndex = 5;
+			this->btnCat->Text = L"Cat";
+			this->btnCat->UseVisualStyleBackColor = true;
+			this->btnCat->Click += gcnew System::EventHandler(this, &MyForm::BtnCat_Click);
 			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 15);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(791, 430);
-			this->Controls->Add(this->btnSunglasses);
+			this->Controls->Add(this->btnCat);
 			this->Controls->Add(this->btnPlay);
 			this->Controls->Add(this->picCam);
 			this->Controls->Add(this->btnMyCameraOFF);
@@ -163,6 +152,23 @@ namespace HwaChat {
 			}
 			return 0;
 		}
+		int showMyCamera_CatEars() {
+
+			int deviceID = 0;             // 0 = open default camera
+			int apiID = cv::CAP_ANY;      // 0 = autodetect default API
+			cap.open(deviceID + apiID);
+
+			for (;;) {
+				cap.read(frame);
+				if (frame.empty()) {
+					cerr << "ERROR! blank frame grabbed\n";
+					break;
+				}
+				picCam->Image = camera.Cat(frame);
+				if (waitKey(5) >= 0) break;
+			}
+			return 0;
+		}
 	private: System::Void BtnMyCameraOFF_Click(System::Object^ sender, System::EventArgs^ e) {
 		exit(0);
 	}
@@ -170,7 +176,10 @@ namespace HwaChat {
 		showMyCamera();
     }
 	private: System::Void BtnSunglasses_Click(System::Object^ sender, System::EventArgs^ e) {
-
+		
 	}
+    private: System::Void BtnCat_Click(System::Object^ sender, System::EventArgs^ e) {
+		showMyCamera_CatEars();
+    }
 };
 }
