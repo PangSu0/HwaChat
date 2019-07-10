@@ -1,13 +1,13 @@
-#include "MainForm.h"
+#include "StartForm.h"
 
-using namespace std;
-using namespace defCamera;
 using namespace System;
 using namespace System::Windows::Forms;
 
-void iMain() {
+void Main()
+{
 	Application::EnableVisualStyles();
 	Application::SetCompatibleTextRenderingDefault(false);
-	/*HWACHAT::MainForm mainform;
-	Application::Run(% mainform);*/
+	HWACHAT1::StartForm startform;
+	Application::Run(% startform);
+
 }

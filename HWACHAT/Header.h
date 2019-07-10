@@ -13,6 +13,5 @@ namespace defCamera
 	public: 
 		camera();
 		System::Drawing::Bitmap^ Show(Mat& colorImage);
-
 	};
 }
