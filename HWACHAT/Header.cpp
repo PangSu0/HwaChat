@@ -27,3 +27,4 @@ System::Drawing::Bitmap^ camera::Show(cv::Mat& colorImage) {
 	}
 	return b;
 }
+

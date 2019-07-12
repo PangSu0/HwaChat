@@ -4,9 +4,10 @@
 #include <opencv2/core/core.hpp>
 #include <opencv2/videoio.hpp>
 #include "Header.h"
+#include "OptionForm.h"
 
 namespace HWACHAT {
-	
+
 	using namespace System;
 	using namespace System::ComponentModel;
 	using namespace System::Collections;
@@ -15,9 +16,7 @@ namespace HWACHAT {
 	using namespace System::Drawing;
 	using namespace std;
 	using namespace defCamera;
-
-	//camera abc;
-	//Mat frame;
+	using namespace HWACHAT_OPTION;
 
 	public ref class MainForm : public DevExpress::XtraEditors::XtraForm
 	{
@@ -26,7 +25,7 @@ namespace HWACHAT {
 		{
 			InitializeComponent();
 		}
-	
+
 	protected:
 		~MainForm()
 		{
@@ -61,11 +60,6 @@ namespace HWACHAT {
 	private: DevExpress::XtraBars::Navigation::TileBarGroup^ tileBarGroup15;
 	private: DevExpress::XtraBars::Navigation::TileBarItem^ tileBarItem2;
 	private: DevExpress::XtraBars::Navigation::TileBarItem^ tileBarItem3;
-
-
-
-
-
 	private:
 		System::ComponentModel::Container^ components;
 
@@ -157,7 +151,7 @@ namespace HWACHAT {
 			this->btnSetting->Name = L"btnSetting";
 			this->btnSetting->Size = System::Drawing::Size(52, 45);
 			this->btnSetting->TabIndex = 4;
-			this->btnSetting->Click += gcnew System::EventHandler(this, &MainForm::BtnSetting_Click);
+			this->btnSetting->Click += gcnew System::EventHandler(this, &MainForm::btnSetting_Click);
 			// 
 			// picMycam
 			// 
@@ -308,43 +302,41 @@ namespace HWACHAT {
 
 		}
 #pragma endregion
-public:
-	int LiveCam()
-	{
-		camera abc;
-		Mat frame;
-		VideoCapture cam;
-
-		int deviceID = 0;             // 0 = open default camera
-		int apiID = cv::CAP_ANY;      // 0 = autodetect default API
-		cam.open(deviceID + apiID);
-		if (!cam.isOpened()) {
-			cerr << "ERROR! Unable to open camera\n";
-			return -1;
-		}
-		cout << "Start grabbing" << endl
-			<< "Press any key to terminate" << endl;
-		for (;;)
+		int LiveCam()
 		{
-			cam.read(frame);
-			if (frame.empty()) {
-				cerr << "ERROR! blank frame grabbed\n";
-				break;
+			camera abc;
+			Mat frame;
+			VideoCapture cam;
+
+			int deviceID = 0;             // 0 = open default camera
+			int apiID = cv::CAP_ANY;      // 0 = autodetect default API
+			cam.open(deviceID + apiID);
+			if (!cam.isOpened()) {
+				cerr << "ERROR! Unable to open camera\n";
+				return -1;
 			}
-			//imshow("Live", frame);
-			picMycam->Image = abc.Show(frame);
-			picMycam->IsMirrored;
-			if (waitKey(5) >= 0)
-				break;
+			cout << "Start grabbing" << endl
+				<< "Press any key to terminate" << endl;
+			for (;;)
+			{
+				cam.read(frame);
+				if (frame.empty()) {
+					cerr << "ERROR! blank frame grabbed\n";
+					break;
+				}
+				//imshow("Live", frame);
+				picMycam->Image = abc.Show(frame);
+				if (waitKey(100) == 27)
+					break;
+			}
+			return 0;
 		}
-		return 0;
-	}
 
 	private: System::Void btnPlay_Click(System::Object^ sender, System::EventArgs^ e) {
 		LiveCam();
 	}
 	private: System::Void btnClose_Click(System::Object^ sender, System::EventArgs^ e) {
-		picMycam->Image = nullptr;
+
 	}
 
 	private: System::Void SimpleButton1_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -353,12 +345,11 @@ public:
 		//firstForm.ShowDialog();
 		//this->Show();
 	}
-private: System::Void BtnSetting_Click(System::Object^ sender, System::EventArgs^ e) {
-		//this->Hide();
-		//HWACHAT1::StartForm firstForm;
-		//firstForm.ShowDialog();
-		//this->Show();
-	
-}
-};
+	private: System::Void btnSetting_Click(System::Object^ sender, System::EventArgs^ e) {
+		OptionForm^ optionform = gcnew OptionForm(this);
+		optionform->Show();
+
+
+	}
+	};
 };

@@ -1,13 +1,12 @@
 #include "MainForm.h"
 
 using namespace std;
-using namespace defCamera;
 using namespace System;
 using namespace System::Windows::Forms;
 
-void iMain() {
+void Main() {
 	Application::EnableVisualStyles();
 	Application::SetCompatibleTextRenderingDefault(false);
-	/*HWACHAT::MainForm mainform;
-	Application::Run(% mainform);*/
+	HWACHAT::MainForm mainform;
+	Application::Run(% mainform);
 }
