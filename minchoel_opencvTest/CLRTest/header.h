@@ -8,13 +8,14 @@ using namespace System::Runtime::InteropServices;
 
 namespace defCamera
 {
-	class camera
+	class Camera
 	{
-
+	
 	public:
-		camera();
+		Camera();
 		System::Drawing::Bitmap^ Show(Mat& colorImage);
-		System::Drawing::Bitmap^ Sunglass(Mat& colorImage);
+
+		
 		
 	};
 }

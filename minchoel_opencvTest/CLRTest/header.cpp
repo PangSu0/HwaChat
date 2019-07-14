@@ -11,12 +11,12 @@ CascadeClassifier face_cascade;
 
 
 
-camera::camera()
+Camera::Camera()
 {
 }
 
 
-System::Drawing::Bitmap^ camera::Show(cv::Mat& colorImage) {
+System::Drawing::Bitmap^ Camera::Show(cv::Mat& colorImage) {
 	
 	face_cascade_name = "C:\\opencv\\opencv-4.1.0\\data\\haarcascades\\haarcascade_frontalface_alt.xml";
 	if (!face_cascade.load(face_cascade_name)) { printf("--(!)Error loading face cascade\n");  };

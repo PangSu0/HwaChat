@@ -27,7 +27,7 @@ using namespace defCamera;
 	using namespace System::Drawing;
 
 
-	camera camera;
+	Camera camera;
 	Mat frame;
 	VideoCapture cam;
 
@@ -58,15 +58,14 @@ using namespace defCamera;
 			}
 		}
 
-
-
+		// 컨트롤 접근을 위한 선언
 	private: System::Windows::Forms::PictureBox^ picCam;
 	private: System::Windows::Forms::Button^ btnPlay;
 	private: System::Windows::Forms::Button^ Stop;
 
-	protected:
+	
 
-	protected:
+
 
 	private:
 		/// <summary>

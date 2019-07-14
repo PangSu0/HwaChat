@@ -20,12 +20,11 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
-    <ProjectGuid>{7DD2A439-C7FA-4CB9-B1C0-973DABC71CB5}</ProjectGuid>
+    <ProjectGuid>{9D2B6986-AD67-4585-9DA6-782BDF974075}</ProjectGuid>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <Keyword>ManagedCProj</Keyword>
-    <RootNamespace>CLRTest</RootNamespace>
+    <RootNamespace>ClientChatTest</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
-    <ProjectName>SLRTest</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -91,13 +90,11 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\opencv\opencv-4.1.0\build\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>opencv_world410d.lib;</AdditionalDependencies>
+      <AdditionalDependencies />
       <SubSystem>Windows</SubSystem>
       <EntryPointSymbol>Main</EntryPointSymbol>
-      <AdditionalLibraryDirectories>C:\opencv\opencv-4.1.0\build\x64\vc16\lib</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -123,11 +120,11 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\opencv\opencv-4.1.0\build\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>opencv_world410.lib;</AdditionalDependencies>
-      <AdditionalLibraryDirectories>C:\opencv\opencv-4.1.0\build\x64\vc16\lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies />
+      <SubSystem>Windows</SubSystem>
+      <EntryPointSymbol>Main</EntryPointSymbol>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -138,19 +135,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="header.cpp" />
-    <ClCompile Include="MyForm.cpp" />
-    <ClCompile Include="opencv.cpp" />
+    <ClCompile Include="ClientForm.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="header.h" />
-    <ClInclude Include="MyForm.h">
+    <ClInclude Include="ClientForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="MyForm.resx">
-      <DependentUpon>MyForm.h</DependentUpon>
+    <EmbeddedResource Include="ClientForm.resx">
+      <DependentUpon>ClientForm.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
