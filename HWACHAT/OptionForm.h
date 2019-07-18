@@ -49,15 +49,6 @@ namespace HWACHAT_OPTION {
 
 	private: DevExpress::XtraEditors::SimpleButton^ simpleButton3;
 
-
-
-
-
-
-	protected:
-
-
-
 	private:
 		/// <summary>
 		/// Required designer variable.
@@ -177,6 +168,7 @@ namespace HWACHAT_OPTION {
 			this->tbcSpeaker->Properties->LabelAppearance->TextOptions->HAlignment = DevExpress::Utils::HorzAlignment::Center;
 			this->tbcSpeaker->Size = System::Drawing::Size(104, 45);
 			this->tbcSpeaker->TabIndex = 0;
+			this->tbcSpeaker->EditValueChanged += gcnew System::EventHandler(this, &OptionForm::TbcSpeaker_EditValueChanged);
 			// 
 			// OptionForm
 			// 
@@ -202,6 +194,46 @@ private: System::Void SimpleButton1_Click(System::Object^ sender, System::EventA
 }
 private: System::Void SimpleButton2_Click(System::Object^ sender, System::EventArgs^ e) {
 	tbcMic->Value = 0;
+}
+private: System::Void TbcSpeaker_EditValueChanged(System::Object^ sender, System::EventArgs^ e) {
+	//HRESULT hr = CoInitialize(NULL);
+	//if (hr == S_OK)
+	//{
+	//	IMMDeviceEnumerator* pIMMDeviceEnumerator = NULL;
+	//	hr = CoCreateInstance(CLSID_MMDeviceEnumerator, NULL, CLSCTX_ALL,
+	//		IID_IMMDeviceEnumerator, (LPVOID*)& pIMMDeviceEnumerator);
+	//	if (hr == S_OK)
+	//	{
+	//		IMMDevice* defaultDevice = NULL;
+	//		hr = pIMMDeviceEnumerator->GetDefaultAudioEndpoint(eRender, eConsole, &defaultDevice);
+	//		pIMMDeviceEnumerator->Release();
+	//		pIMMDeviceEnumerator = NULL;
+	//		if (hr == S_OK) //
+	//		{
+	//			IAudioEndpointVolume* EndPointVolume = NULL;
+	//			hr = defaultDevice->Activate(__uuidof(IAudioEndpointVolume),
+	//				CLSCTX_ALL, NULL, (LPVOID*)& EndPointVolume);
+	//			defaultDevice->Release();
+	//			defaultDevice = NULL;
+
+	//			float Volume = 0; //Scalar volume is from zero to 1.00 in 0.01 step
+	//			hr = EndPointVolume->GetMasterVolumeLevelScalar(&Volume);
+	//			if (hr == S_OK) //       
+	//			{
+	//				Volume = tbcSpeaker->Value;
+	//				if (Volume >= 1)
+	//				{
+	//					Volume = Volume / 100; //Adjust to zero to 1.00 in 0.01 step
+	//				}
+	//				hr = EndPointVolume->SetMasterVolumeLevelScalar((float)Volume, NULL);
+	//				EndPointVolume->Release();
+	//				EndPointVolume = NULL;
+	//			}
+	//		}
+	//	}
+	//	CoUninitialize();
+	//}
+
 }
 };
 }

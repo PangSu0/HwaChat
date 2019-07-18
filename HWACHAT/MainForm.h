@@ -20,9 +20,11 @@ namespace HWACHAT {
 
 	public ref class MainForm : public DevExpress::XtraEditors::XtraForm
 	{
+	private: System::Windows::Forms::Form^ mainform;
 	public:
-		MainForm(void)
+		MainForm(System::Windows::Forms::Form^ o)
 		{
+			mainform = o;
 			InitializeComponent();
 		}
 
@@ -336,7 +338,6 @@ namespace HWACHAT {
 		LiveCam();
 	}
 	private: System::Void btnClose_Click(System::Object^ sender, System::EventArgs^ e) {
-
 	}
 
 	private: System::Void SimpleButton1_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -348,8 +349,7 @@ namespace HWACHAT {
 	private: System::Void btnSetting_Click(System::Object^ sender, System::EventArgs^ e) {
 		OptionForm^ optionform = gcnew OptionForm(this);
 		optionform->Show();
-
-
 	}
 	};
+
 };
