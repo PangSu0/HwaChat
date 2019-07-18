@@ -38,7 +38,7 @@ void ClientMain(string servAddress, string portNumber)
 		Mat frame, send;
 		vector < uchar > encoded;
 		VideoCapture cap(0); // Grab the camera
-		namedWindow("send");	//윈도우 설정
+		//namedWindow("send");
 		if (!cap.isOpened()) {
 			cerr << "OpenCV Failed to open camera";
 			exit(1);
@@ -50,11 +50,11 @@ void ClientMain(string servAddress, string portNumber)
 			if (frame.size().width == 0)continue;//simple integrity check; skip erroneous data...
 			resize(frame, send, Size(FRAME_WIDTH, FRAME_HEIGHT), 0, 0, INTER_LINEAR);
 			vector < int > compression_params;
-			compression_params.push_back(95);	//뭔지모름
+			compression_params.push_back(95);
 			compression_params.push_back(jpegqual);
 
 			imencode(".jpg", send, encoded, compression_params);
-			imshow("send", send);
+			//imshow("send", send);
 			int total_pack = 1 + (encoded.size() - 1) / PACK_SIZE;
 
 			int ibuf[1];

@@ -19,10 +19,10 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Client.cpp" />
+    <ClCompile Include="ClientMain.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="PracticalSocket.cpp" />
-    <ClCompile Include="Server.cpp" />
+    <ClCompile Include="ServerMain.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="config.h" />
@@ -120,12 +120,12 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\opencv-4.1.0\build\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\opencv-4.1.0\build\include;C:\dev\ffmpeg\include;C:\dev\SDL\include;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\opencv-4.1.0\build\x64\vc16\lib</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\opencv-4.1.0\build\x64\vc16\lib;C:\dev\ffmpeg\lib;C:\dev\SDL\lib\x64;</AdditionalLibraryDirectories>
       <AdditionalDependencies>opencv_world410d.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -162,14 +162,14 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\opencv-4.1.0\build\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\opencv-4.1.0\build\include;C:\dev\ffmpeg\include;C:\dev\SDL\include;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\opencv-4.1.0\build\x64\vc16\lib</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\opencv-4.1.0\build\x64\vc16\lib;C:\dev\ffmpeg\lib;C:\dev\SDL\lib\x64;</AdditionalLibraryDirectories>
       <AdditionalDependencies>opencv_world410.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
