@@ -13,7 +13,7 @@ namespace ChatTest {
 	using namespace System::Net;
 	using namespace System::Net::Sockets;
 	using namespace System::Threading;
-
+	
 
 	/// <summary>
 	/// ChatForm에 대한 요약입니다.
@@ -50,6 +50,7 @@ namespace ChatTest {
 
 	private: System::Windows::Forms::RichTextBox^ mainTextBox;
 	private: System::ComponentModel::BackgroundWorker^ backgroundWorker;
+
 
 	private:
 		/// <summary>
@@ -202,7 +203,7 @@ namespace ChatTest {
 					}
 					catch (Exception^ exception)
 					{
-
+						
 					}
 				}
 			}
